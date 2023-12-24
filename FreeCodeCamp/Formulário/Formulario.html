@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+	#teste{
+		resize:none;
+	}
+	body{
+		
+		padding:0px;
+		background:orange;
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+		font-size:20px;
+		font-family:'Poppins';
+		color:white;
+	}
+	
+	form{
+		width:100%;
+		max-width:720px;
+		background-color:#b3aaee;
+		border-radius:15px;
+		opacity:0.8;
+	}
+	
+	html{
+		padding:0px;
+	}
+	
+	main{
+		width:100%;	
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+	}
+	
+	header{
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+	}
+	
+	.texto{
+		width:100%;
+		border-radius:5px;
+		height:2.374rem;
+	}
+	
+	img{
+		position:fixed;
+		z-index:-1;
+		margin:0px;
+		width:100vw;
+		height:100vh;
+		top:-8px;
+	}
+	
+	.botao{
+		width:1.25rem;
+		height:1.25rem;
+	}
+	
+	input{
+		margin-top:0px;
+		margin-bottom:0px;
+	}
+	
+	.div-botao{
+		display:flex;
+		align-items:center;
+	}
+	
+	.div-entrada{
+		width:80%;
+
+	}
+	
+	form{
+		display:flex;
+		flex-direction:column;
+	}
+	
+	.centralizado{
+		align-self:center;
+	}
+	
+	fieldset{
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+	}
+	
+	textarea{
+		width:100%;
+		height:100px;
+	}
+	
+	#dropdown{
+		width:100%;
+		height:2.374rem;
+	}
+	
+	input[type="submit"]{
+		align-self:center;
+		margin-top:50px;
+		margin-bottom:50px;
+	}
+	
+</style>
+
+<body>
+	<img src="https://blog.elos.vc/content/images/size/w2000/downloaded_images/Como-utilizar-metodologias-ativas-na-educa--o-EAD/1-jc_OJDbnBGxdc0eTDInhRw.png">
+	<header>
+		<h1 id="title"> Pesquisa sobre <a href="https://youtu.be/w-TKLLilmBU">Estudo</a> na Pandemia</h1>
+		<p id="description">Por favor responda as nossa perguntas sobre seus hábitos de estudo e nos ajude a melhorar ah sla dps eu escrevo aqui.</p>
+	</header>
+	<main>
+		<form id="survey-form">
+			<fieldset>
+				<legend>Informações Pessoais</legend>
+				
+				<div class="div-entrada">
+					<label id="name-label" for="name">Nome</label><br>
+					<input id="name" class="texto" type="text" placeholder="Digite seu nome">
+				</div>
+				<br>
+				
+				<div class="div-entrada">
+					<label id="email-label"for="email">Digite seu email</label>
+					<input id="email" class="texto" type="email" placeholder="Digite seu email">
+				</div>
+				<br>
+					
+				<div class="div-entrada">
+					<label id="number-label" for="number">Escolha sua idade</label>
+					<input class="texto" min="0" max="200" id="number" type="number" placeholder="Digite sua idade">
+				</div>
+				<br>
+					
+				<div class="div-entrada">
+					<p>Selecione seu nível de educação</p>
+					<select id="dropdown">
+						<option selected hidden>Selecione aqui</option>
+						<option value="Estudante">Estudante</option>
+						<option value="Professor">Professor</option>
+						<option value="Diretor">Diretor</option>
+					</select>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Escolha a melhor opção para você</legend>
+					<div class="div-entrada">
+						<p>Você prefere estudo síncrono ou assíncrono?</p>
+						<div class="div-botao">
+							<input class="botao" type="radio" id="radio1" name="gpradio">
+							<label for="radio1">Síncrono</label>
+						</div>
+						<br>
+						
+						<div class="div-botao">
+							<input class="botao" type="radio" id="radio2" name="gpradio">
+							<label for="radio2">Assíncrono</label>
+						</div>
+						<br>
+						
+						<div class="div-botao">
+							<input class="botao" type="radio" id="radio3" name="gpradio">
+							<label for="radio3">Misto</label>
+						</div>
+						<br>
+					</div>
+					
+					<div class="div-entrada">
+						<p>Por quais plataformas você gosta de estudar?</p>
+						<div class="div-botao">
+							<input class="botao" type="checkbox" id="cb1" name="gpcheck">
+							<label for="cb1">Livro</label>
+						</div>
+						<br>
+						
+						<div class="div-botao">
+							<input class="botao" type="checkbox" id="cb2" name="gpcheck">
+							<label for="cb2">Artigo/PDF</label>
+						</div>
+						<br>
+						
+						<div class="div-botao">
+							<input class="botao" type="checkbox" id="cb3" name="gpcheck">
+							<label for="cb3">Vídeo aula</label>
+						</div>
+						<br>
+						
+						<div class="div-botao">
+							<input class="botao" type="checkbox" id="cb4" name="gpcheck">
+							<label for="cb4">Aula ao vivo</label>
+						</div>
+						<br>
+						
+						<div class="div-botao">
+							<input class="botao" type="checkbox" id="cb5" name="gpcheck">
+							<label for="cb5">Outro</label>
+						</div>
+						<br>
+						
+						<p>Escreva outras plataformas de estudo:</p>
+						<input class="texto" id="outroInput" type="text">
+						<br>
+					</div>
+					
+			</fieldset>
+			<fieldset>
+				<legend>Finalizar pesquisa</legend>
+				<div class="div-entrada">
+					<p>Algum comentário adicional? Digite abaixo</p>
+					<textarea id="teste"></textarea>
+				</div>
+				<br>
+			</fieldset>
+			<input type="submit">
+		</form>
+	</main>
+	<footer>
+		<p>Proudly created by Olavinho do Pneu™</p>
+	</footer>
+</body>
+
+</html>

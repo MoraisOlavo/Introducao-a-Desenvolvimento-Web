@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exercicio 10</title>
+<script>
+async function getJSON() {
+	try{
+		
+		let coord=document.getElementById("entrada_coord").value.split(" ");
+		
+		const response = await fetch("http://api.open-meteo.com/v1/forecast?latitude="+parseFloat(coord[0])+"&longitude="+parseFloat(coord[1])+"&current_weather=true");
+		const jsonData = await response.json();
+		console.log(jsonData);
+		
+		document.getElementById("p_coord").innerHTML="Coordinates: "+coord[0]+", "+coord[1];
+		document.getElementById("p_temp").innerHTML="Temperature: "+jsonData["current_weather"]["temperature"]+" °C";
+
+		let weather_code=jsonData["current_weather"]["weathercode"];
+		
+		if(weather_code==0){
+			document.getElementById("p_weather_cond").innerHTML="Clear Sky";
+			document.getElementById("icon").src="http://openweathermap.org/img/wn/01d@2x.png";
+		}else if(weather_code==1){
+			document.getElementById("p_weather_cond").innerHTML="Mainly Clear";
+			document.getElementById("icon").src="http://openweathermap.org/img/wn/02d@2x.png";
+		}else if(weather_code<=3){
+			document.getElementById("p_weather_cond").innerHTML="Overcast";
+			document.getElementById("icon").src="http://openweathermap.org/img/wn/03d@2x.png";
+		}else{
+			document.getElementById("p_weather_cond").innerHTML="Rain";
+			document.getElementById("icon").src="http://openweathermap.org/img/wn/09d@2x.png";
+		}
+		
+		
+	}catch{
+		//Caso o fetch não funcione
+		document.getElementById("p_coord").innerHTML="Something went wrong :(";
+		document.getElementById("p_temp").innerHTML="";
+		document.getElementById("p_weather_cond").innerHTML="";
+		document.getElementById("icon").src="";
+	}
+  
+}
+</script>
+
+<style>
+	body{
+		margin:0px;
+	}
+
+	.centralized-container{
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+		justify-content:center;
+		height:100vh;
+		font-size:1.5em;
+	}
+	
+	#div_input{
+		background-color:red;
+		display:flex;
+		justify-content:center;
+	}
+
+	button{
+		font-size:1.5em;
+	}
+	
+	input{
+		font-size:1.5em;
+	}
+	
+</style>
+
+</head>
+
+<body>
+	<div class="centralized-container">
+		<div id="div_input">
+			<input id="entrada_coord" type="text">
+			<button onClick="getJSON()">Fetch Weather</button>
+		</div>
+		<p id="p_coord"></p>
+		<p id="p_temp"></p>
+		<p id="p_weather_cond"></p>
+		<img id="icon">
+	</div>
+</body>
+</html>

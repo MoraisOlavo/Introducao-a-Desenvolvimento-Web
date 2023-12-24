@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercicio 8</title>
+</head>
+
+<body>
+    <p id="contador"></p>
+    <p id="enunciado"></p>
+    <p id="resp_escolhida"></p>
+    <button id="altA"></button>
+    <button id="altB"></button>
+    <button id="altC"></button>
+    <button id="altD"></button>
+    <br>
+    <br>
+    <button id="proxPergunta">Próxima Pergunta</button>
+    <button id="antPergunta">Voltar Pergunta</button>
+    <button id="enviar">Enviar Respostas</button>
+
+    <script>
+        //Cria o vetor com as perguntas
+        const perguntas = [
+            {
+                enunciado: "Qual é a capital do Brasil?",
+                alternativas: ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+                resposta: 2
+            },
+            {
+                enunciado: "Qual é o maior país do mundo em área territorial?",
+                alternativas: ["Estados Unidos", "Rússia", "China", "Canadá"],
+                resposta: 1
+            },
+            {
+                enunciado: "Quem pintou a Mona Lisa?",
+                alternativas: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Michelangelo"],
+                resposta: 1
+            },
+            {
+                enunciado: "Qual é o animal terrestre mais rápido?",
+                alternativas: ["Guepardo", "Leopardo", "Lobo", "Tartaruga"],
+                resposta: 0
+            },
+            {
+                enunciado: "Quantos elementos químicos existem na tabela periódica?",
+                alternativas: ["92", "108", "118", "140"],
+                resposta: 2
+            },
+            {
+                enunciado: "Qual é o maior planeta do sistema solar?",
+                alternativas: ["Júpiter", "Saturno", "Urano", "Netuno"],
+                resposta: 0
+            },
+            {
+                enunciado: "Quem escreveu a peça de teatro 'Romeu e Julieta'?",
+                alternativas: ["William Shakespeare", "Anton Chekhov", "Arthur Miller", "Tennessee Williams"],
+                resposta: 0
+            },
+            {
+                enunciado: "Qual é o maior oceano do mundo?",
+                alternativas: ["Oceano Atlântico", "Oceano Índico", "Oceano Ártico", "Oceano Pacífico"],
+                resposta: 3
+            },
+            {
+                enunciado: "Qual é a capital do Japão?",
+                alternativas: ["Tóquio", "Quioto", "Osaka", "Hiroshima"],
+                resposta: 0
+            },
+            {
+                enunciado: "Quem descobriu a penicilina?",
+                alternativas: ["Marie Curie", "Albert Einstein", "Alexander Fleming", "Isaac Newton"],
+                resposta: 2
+            }
+        ];
+
+        //Variávies globais
+        let questao_atual=0;
+        let respostas=[];
+
+        //Exibe a x-ésima questão
+        function CarregarQuestão(x){
+            console.log("Exibindo questão: "+x);
+            console.log(perguntas[x]);
+
+            //Exibe o progresso no quiz e o enunciado da qeustão
+            document.getElementById("contador").innerHTML=String("Questão "+(x+1)+" de "+perguntas.length);
+            document.getElementById("enunciado").innerHTML=perguntas[x].enunciado;
+            
+            //Exibe a resposta que o usuário já escolheu para essa questão
+            if(respostas[x]==-1){
+                document.getElementById("resp_escolhida").innerHTML="Nenhuma resposta escolhida ainda"
+            }else{
+                document.getElementById("resp_escolhida").innerHTML=String("Alternativa escolhida: "+perguntas[x].alternativas[respostas[x]]);
+            }
+            
+            //Define os textos de cada botão
+            document.getElementById("altA").innerHTML=perguntas[x].alternativas[0];
+            document.getElementById("altB").innerHTML=perguntas[x].alternativas[1];
+            document.getElementById("altC").innerHTML=perguntas[x].alternativas[2];
+            document.getElementById("altD").innerHTML=perguntas[x].alternativas[3];
+
+            //Desabilita o botão de voltar se está na primeira pergunta, ativa o botão se não for a primeira pergunta
+            if(x==0){
+                document.getElementById("antPergunta").disabled=true;
+            }else{
+                document.getElementById("antPergunta").disabled=false;
+            }
+
+            //Desabilita o botão de avançar se está na última pergunta, ativa o botão se não for a última pergunta
+            if(x==perguntas.length-1){
+                document.getElementById("proxPergunta").disabled=true;
+            }else{
+                document.getElementById("proxPergunta").disabled=false;
+            }
+        }
+        
+        //Função que define os valores iniciais das variáveis globais e Exibe a primeira pergunta
+        function Iniciar(){
+            questao_atual=0;
+            respostas=[];
+            for(let i=0;i<perguntas.length;i++){
+                respostas.push(-1);
+            }
+            CarregarQuestão(0);
+        }
+
+        //Calcula a nnota do quiz, exibe para o usuário e reinicia o quiz
+        function MostrarResultado(){
+            let n_acertos=0;
+            for(let i=0;i<respostas.length;i++){
+                if(respostas[i]==perguntas[i].resposta){
+                    n_acertos+=1;
+                    console.log("Acertou a "+i)
+                }else{
+                    console.log("Errou a "+i);
+                }
+            }
+            alert("Total de acertos: "+n_acertos+"\n"+"Nota final: "+(10*n_acertos/perguntas.length));
+            Iniciar();
+        }
+
+        //Define o que será feito quando cada botão for clicado
+        document.getElementById("altA").addEventListener("click", function (e){
+            respostas[questao_atual]=0;
+            document.getElementById("resp_escolhida").innerHTML=String("Alternativa escolhida: "+perguntas[questao_atual].alternativas[0]);
+        });
+
+        document.getElementById("altB").addEventListener("click", function (e){
+            respostas[questao_atual]=1;
+            document.getElementById("resp_escolhida").innerHTML=String("Alternativa escolhida: "+perguntas[questao_atual].alternativas[1]);
+        });
+
+        document.getElementById("altC").addEventListener("click", function (e){
+            respostas[questao_atual]=2;
+            document.getElementById("resp_escolhida").innerHTML=String("Alternativa escolhida: "+perguntas[questao_atual].alternativas[2]);
+        });
+
+        document.getElementById("altD").addEventListener("click", function (e){
+            respostas[questao_atual]=3;
+            document.getElementById("resp_escolhida").innerHTML=String("Alternativa escolhida: "+perguntas[questao_atual].alternativas[3]);
+        });
+
+        document.getElementById("proxPergunta").addEventListener("click", function (e){
+            questao_atual+=1;
+            CarregarQuestão(questao_atual);
+        });
+
+        document.getElementById("antPergunta").addEventListener("click", function (e){
+            questao_atual-=1;
+            CarregarQuestão(questao_atual);
+        });
+
+        document.getElementById("enviar").addEventListener("click",function (e){
+            MostrarResultado()
+        });
+
+        //Inicia o quiz
+        Iniciar();
+    </script>
+</body>
+
+</html>

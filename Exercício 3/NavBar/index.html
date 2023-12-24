@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Instituto de Ciências Matemáticas e Computação - USP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: montserrat;
+        }
+
+        nav {
+            background: #5434af;
+            height: 80px;
+            width: 100%;
+        }
+
+        label.logo {
+            color: white;
+            font-size: 35px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 17px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        a.active,
+        a:hover {
+            background: #1d075f;
+            transition: .5s;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 952px) {
+            label.logo {
+                font-size: 30px;
+                padding-left: 50px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 858px) {
+            .checkbtn {
+                display: block;
+            }
+
+            ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #1d075f;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            nav ul li a {
+                font-size: 20px;
+            }
+
+            a:hover,
+            a.active {
+                background: none;
+                color: #5434af;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        section h1 {
+            font-size: 30px;
+            color: #5434af;
+        }
+
+        p{
+            color:blue;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">ICMC - USP</label>
+        <ul>
+            <li><a class="active" href="#">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h1>Bem-vindo ao Instituto de Ciências Matemáticas e Computação - USP</h1>
+        <p>O Instituto de Ciências Matemáticas e Computação (ICMC) da Universidade de São Paulo (USP) é uma renomada instituição acadêmica dedicada à pesquisa e ao ensino nas áreas de Ciências da Computação, Matemática Aplicada, Matemática Computacional, Estatística e Sistemas de Informação.</p>
+        <p>Localizado na cidade de São Carlos, interior de São Paulo, o ICMC é reconhecido nacional e internacionalmente pela excelência de seus programas acadêmicos e contribuições significativas para o avanço do conhecimento nessas áreas.</p>
+        <p>O instituto oferece uma ampla gama de cursos de graduação, incluindo Ciências da Computação, Matemática, Estatística, Matemática Aplicada e Computação Matemática. Além disso, conta com programas de pós-graduação abrangentes, que incluem mestrado e doutorado, proporcionando aos estudantes oportunidades de se envolverem em pesquisas avançadas e colaborativas.</p>
+        <p>No ICMC, os alunos têm acesso a uma infraestrutura moderna e recursos de ponta, permitindo que eles desenvolvam habilidades práticas e teóricas relevantes para o mercado de trabalho e para a academia. Os docentes e pesquisadores do instituto são altamente qualificados e estão envolvidos em projetos inovadores que abrangem diversas áreas, como Inteligência Artificial, Computação Gráfica, Otimização, Matemática Aplicada, Estatística, entre outras.</p>
+        <p>Além de suas atividades acadêmicas, o ICMC promove uma série de eventos científicos, workshops e palestras, que trazem renomados especialistas nacionais e internacionais para compartilhar conhecimentos e estimular discussões acadêmicas. Essas iniciativas proporcionam um ambiente intelectualmente estimulante, favorecendo o desenvolvimento de habilidades de pesquisa e a formação de uma comunidade acadêmica vibrante.</p>
+        <p>O ICMC também mantém fortes parcerias com empresas e instituições de pesquisa, promovendo a colaboração e a transferência de conhecimento entre a academia e o setor produtivo. Essas parcerias resultam em oportunidades de estágio, projetos conjuntos e desenvolvimento de soluções inovadoras para desafios do mundo real.</p>
+        <p>Se você é um entusiasta da ciência, apaixonado por computação, matemática e estatística, o Instituto de Ciências Matemáticas e Computação da USP é o lugar ideal para buscar conhecimento, expandir horizontes e fazer parte de uma comunidade acadêmica dedicada à excelência acadêmica e ao avanço do conhecimento.</p>
+    </section>
+
+</body>
+
+</html>

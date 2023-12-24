@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exercicio 9</title>
+<script>
+async function getJSON() {
+	try{
+		const response = await fetch("https://v2.jokeapi.dev/joke/Any");
+		const jsonData = await response.json();
+		console.log(jsonData);
+		  
+		//Verifica se é uma piada de uma ou duas partes
+		if(jsonData["joke"]){
+			console.log(jsonData["joke"]);
+			document.getElementById("p1").innerHTML=jsonData["joke"];
+			document.getElementById("p2").innerHTML="";
+		}else if(jsonData["setup"] && jsonData["delivery"]){
+			console.log(jsonData["setup"]);
+			document.getElementById("p1").innerHTML=jsonData["setup"];
+			console.log(jsonData["delivery"]);
+			document.getElementById("p2").innerHTML=jsonData["delivery"];
+		}else{
+			console.log("erro");
+			document.getElementById("p1").innerHTML="Erro ao acessar o Servidor :( ";
+		}
+	}catch{
+		//Caso o fetch não funcione
+		document.getElementById("p1").innerHTML="Erro ao acessar o Servidor :( ";
+	}
+  
+}
+</script>
+
+<style>
+	div{
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		min-height:95vh;
+		align-items: center;
+	}
+	p{
+		font-size:2em;
+		min-height: 2em;
+	}
+
+	button{
+		font-size:2em;
+		border-radius:10px;
+	}
+</style>
+
+</head>
+<body>
+<div>
+	<p>Joke Generator!</p>
+	<p id="p1">Click the button to generate a joke!</p>
+	<p id="p2"></p>
+	<button onClick="getJSON()">get a joke</button>
+</div>
+
+</body>
+</html>

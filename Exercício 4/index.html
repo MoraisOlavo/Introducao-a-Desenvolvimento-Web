@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+	
+		<script>
+			let phrase;
+			let searchChar;
+			
+			function findOccurrences(phrase, searchChar){
+				
+				let count=0;
+				let occurrences=[];
+				
+				for(let i=0;i<phrase.length;i++){
+					if(phrase[i]==searchChar){
+						count++;
+						occurrences.push(i);
+					}
+				}
+				console.log(occurrences);
+				console.log(count);
+			
+			}
+			phrase="Hello World";
+			searchChar='l';
+			
+			findOccurrences(phrase,searchChar);
+			findOccurrences("OpenAI is awesome!",'o');
+			findOccurrences("Programming is fun.",'g');
+			findOccurrences("This is a test.",'z');
+			
+		</script>
+	</body>
+</html>

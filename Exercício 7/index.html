@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercicio 7</title>
+        <style>
+            .todo{
+                color:red;
+            }
+
+            .done{
+                color: green;
+                text-decoration: line-through;
+            }
+        </style>
+   
+        <script>            
+            function adicionar(){
+                //Obtém o texto digitado 
+                texto=document.getElementById("caixa_de_texto").value;
+                
+                if(texto!=""){
+                    //Cria o List-item e define sua classe inical e seu comportamento quando for clicado
+                    var li = document.createElement("li");
+                    li.classList.add("todo");
+                    li.addEventListener("click",()=>{                        
+                        li.classList.toggle("todo");
+                        li.classList.toggle("done")
+                    });                   
+
+                    //Adicionao o texto no List-item
+                    li.appendChild(document.createTextNode(texto));
+                    
+                    //Cria o botão de deletar list item e define seu comportamento
+                    del_btn=document.createElement("button");
+                    del_btn.addEventListener("click",function (){
+                        console.log(typeof(this));
+                        this.parentElement.remove();
+                    });
+                    del_btn.appendChild(document.createTextNode("Delete"))                    
+                    
+                    //Adiciona o botão no List Item e adiciona o List-item na Lista
+                    li.appendChild(del_btn);
+                    document.getElementById("lista").appendChild(li);
+
+                    //Apaga o que está escrito no input
+                    document.getElementById("caixa_de_texto").value="";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>To-do-List</h1>
+        <p>Write what you want to add to your to-do list and click the button to add</p>
+        <input id="caixa_de_texto" type="text"><button onclick="adicionar()">add</button> 
+
+        <ul id="lista"></ul>
+    </body>
+</html>

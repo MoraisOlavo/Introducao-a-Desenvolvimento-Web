@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Activity</title>
+</head>
+<body>
+    <h1>DOM Manipulation Activity</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <img src="https://via.placeholder.com/100" alt="Placeholder Image">
+    <button id="taskButton">Perform Task</button>
+</body>
+
+<script>
+    window.addEventListener('load', function () {
+        var button = document.getElementById("taskButton");
+
+        button.addEventListener("click", performTasks);
+
+        function performTasks() {
+            //Change the text of the first paragraph to "New Paragraph 1".
+            var firstParagraph = document.querySelector("p");
+            firstParagraph.textContent = "New Paragraph 1";
+
+            //Add a new list item with the text "Item 4" at the end of the unordered list.
+            var unorderedList = document.querySelector("ul");
+            var newListItem = document.createElement("li");
+            newListItem.textContent = "Item 4";
+            unorderedList.appendChild(newListItem);
+
+            //Change the src attribute of the image to another URL (e.g., https://via.placeholder.com/200).
+            var image = document.querySelector("img");
+            image.src = "https://via.placeholder.com/200";
+
+            //Set the background color of the second paragraph to yellow.
+            var secondParagraph = document.querySelectorAll("p")[1];
+            secondParagraph.style.backgroundColor = "yellow";
+
+            //Add an event listener to the first paragraph that changes its text to "Clicked!" when clicked.
+            var firstParagraph = document.querySelector("p");
+            firstParagraph.addEventListener("click", function() {
+            firstParagraph.textContent = "Clicked!";
+            });
+        }
+    })
+
+
+</script>
+</html>
+
